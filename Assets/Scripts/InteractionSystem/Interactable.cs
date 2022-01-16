@@ -4,36 +4,46 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private Collider2D activeZone;
     [SerializeField] private Interaction interaction;
-
     [SerializeField, ReadOnly] private bool isAccessible = false;
 
     public bool IsAccessible {
-        get { return isAccessible; }
+        get => isAccessible;
     }
 
-    public void Interact()
+    private void Awake()
     {
-        Debug.Log("Interaction!");
+        interaction = FindObjectOfType<Interaction>();
+    }
+
+    private void SwitchAccessIfPlayer(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            isAccessible = !isAccessible;
+        }
+
+        if (isAccessible)
+        {
+            interaction.Target = this;
+        }
+        else
+        {
+            if (interaction.Target == this)
+            {
+                interaction.Target = null;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            interaction.Target = this;
-
-            isAccessible = true;
-        }
+        SwitchAccessIfPlayer(other);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            isAccessible = false;
-        }
+        SwitchAccessIfPlayer(other);
     }
 
 }
