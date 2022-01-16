@@ -3,26 +3,41 @@ using UnityEngine.InputSystem;
 
 class Interaction : MonoBehaviour
 {
-    [SerializeField, ReadOnly] private Interactable target;
-
-    private bool canInteract = true;
+    [SerializeField, ReadOnly] private Interactable _target;
+    [SerializeField] private Inventory _inventory;
 
     public Interactable Target
     {
-        get { return target; }
-        set { target = value; }
+        get { return _target; }
+        set { _target = value; }
+    }
+
+    private void Awake()
+    {
+        _inventory ??= GetComponent<Inventory>();
     }
 
     private void OnInteract()
     {
-        if (!canInteract)
+        if (_target == null)
         {
             return;
         }
 
-        if (target.IsAccessible)
+        if (_target.IsAccessible)
         {
-            target.Interact();
+            switch (_target)
+            {
+                case Item item:
+                {
+                    item.Interact(_inventory);
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
 
             // TODO Limitation:
             //
