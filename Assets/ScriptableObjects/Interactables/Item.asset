@@ -16,4 +16,4 @@ MonoBehaviour:
   _sprite: {fileID: 2800000, guid: 56eadcef162128e489682c3b89f02a17, type: 3}
   _prefab: {fileID: 8542604401983335464, guid: efff13e3c6ab1574ab7f9584b7df8e56, type: 3}
   _isStackable: 1
-  _maxCount: 7
+  _maxCount: 2

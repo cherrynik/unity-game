@@ -335,7 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9029c2a32fb0d8441947081f0afd7c71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  _target: {fileID: 0}
+  _inventory: {fileID: 4621140198050929544}
 --- !u!114 &4621140198050929544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,5 +349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 553335c3fca7ec8489f8200c2b5459ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slots:
-  - {fileID: 0}
+  _slots: []
+  _capacity: 2
+  _size: 0

@@ -1,15 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 class Interaction : MonoBehaviour
 {
-    [SerializeField, ReadOnly] private Interactable _target;
+    [SerializeField, ReadOnly] private List<Interactable> _targets;
     [SerializeField] private Inventory _inventory;
 
-    public Interactable Target
+    public List<Interactable> Targets
     {
-        get { return _target; }
-        set { _target = value; }
+        get => _targets;
+        set => _targets = value;
     }
 
     private void Awake()
@@ -19,31 +20,24 @@ class Interaction : MonoBehaviour
 
     private void OnInteract()
     {
-        if (_target == null)
+        if (_targets.Count == 0)
         {
             return;
         }
 
-        if (_target.IsAccessible)
+        Interactable lastElement = _targets[_targets.Count - 1];
+        switch (lastElement)
         {
-            switch (_target)
+            case Item item:
             {
-                case Item item:
-                {
-                    item.Interact(_inventory);
-                    break;
-                }
-                default:
-                {
-                    break;
-                }
+                item.Interact(_inventory);
+                _targets.Remove(lastElement);
+                break;
             }
-
-            // TODO Limitation:
-            //
-            // A little delay,
-            // Where canInteract = false
-            // Then canInteract = true;
+            default:
+            {
+                break;
+            }
         }
     }
 }

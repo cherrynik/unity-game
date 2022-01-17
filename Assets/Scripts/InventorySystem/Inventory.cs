@@ -59,6 +59,11 @@ public class Inventory : MonoBehaviour
 
             emptySlot ??= isEmpty ? slot : null;
 
+            if (activeSlotsChecked == _size && emptySlot != null)
+            {
+                return emptySlot;
+            }
+
             if (!isEmpty)
             {
                 bool areSame = Item.Compare(slot.Item, itemToFind) &&
@@ -69,11 +74,6 @@ public class Inventory : MonoBehaviour
                     return slot;
                 }
                 ++activeSlotsChecked;
-            }
-
-            if (activeSlotsChecked == _size)
-            {
-                return emptySlot;
             }
         }
 
