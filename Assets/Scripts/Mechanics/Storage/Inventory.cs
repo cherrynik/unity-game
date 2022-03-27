@@ -1,13 +1,21 @@
 using System.Collections.Generic;
+using Team.Mechanics.Interact;
 using UnityEngine;
 
 namespace Team.Mechanics.Storage
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Inventory : MonoBehaviour
     {
         [SerializeField] private List<Slot> _slots = new List<Slot>();
         [SerializeField, Range(1, 10)] private int _capacity = 1;
         [SerializeField, ReadOnly] private int _size = 0;
+
+        public List<Slot> Slots => _slots;
+        public int Capacity => _capacity;
+        public int Size => _size;
 
         private void Awake()
         {
@@ -23,11 +31,20 @@ namespace Team.Mechanics.Storage
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsFull() => _size == _capacity;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsEmpty() => _size == 0;
 
     #nullable enable
+        /// <summary>
+        /// 
+        /// </summary>
         public Slot? GetEmptySlot()
         {
             if (IsFull())
@@ -45,6 +62,9 @@ namespace Team.Mechanics.Storage
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Slot? GetAvailableSlot(Item itemToFind)
         {
             if (IsEmpty())
@@ -82,6 +102,9 @@ namespace Team.Mechanics.Storage
             return emptySlot;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public bool AddItem(Item item)
         {
             Slot? availableSlot;

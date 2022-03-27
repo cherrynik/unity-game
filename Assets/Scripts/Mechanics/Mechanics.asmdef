@@ -1,0 +1,19 @@
+{
+    "name": "Mechanics",
+    "rootNamespace": "",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:35b253e34b8ad224a8125724121731c7",
+        "GUID:83473fd4cdea97e4abc019343eda2354",
+        "GUID:a54a7dc1cdd4ad24da67aaaab58a81b3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

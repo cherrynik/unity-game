@@ -1,20 +1,20 @@
-using UnityEngine;
-
-using Team.Mechanics.Speech;
 using Team.Mechanics.Interact;
-using Team.SO.Creature;
+using UnityEngine;
 
 namespace Team.Mechanics.Creature
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class NonPlayableCharacter : Interactable
     {
-        [SerializeField] private NonPlayableCharacterSettings _settings;
-        [Space]
-        [SerializeField] private Dialogue _tempDialogue;
+        [SerializeField] private SO.Interact.NonPlayableCharacter _settings;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Interact()
         {
-            _tempDialogue.Open();
         }
     }
 }
