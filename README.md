@@ -1,4 +1,6 @@
-# Unity3D-2D-Top-Down
+# My Game
+
+The game has been relocated in gitlab.
 
 ### Inventory Demo
 https://youtu.be/h0-45dB6xSU
