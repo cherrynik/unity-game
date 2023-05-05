@@ -1,6 +1,6 @@
 # My Game
 
-The game has been relocated in gitlab.
+_The game has been relocated in gitlab._
 
 ### Inventory Demo
 https://youtu.be/h0-45dB6xSU
